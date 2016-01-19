@@ -1,24 +1,35 @@
 var path = require('path');
 var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-	devtool: 'eval',
-	context: path.join(__dirname, '../frontend'),
+	devtool: 'source-map',
 	entry: [
-		'../frontend',
-		'webpack-dev-server/client?http://localhost:3000',
-		'webpack/hot/only-dev-server',
+		path.resolve(__dirname, '../frontend')
 	],
 	output: {
 		path: path.join(__dirname, '../assets/dist'),
 		publicPath: '/dist/',
 		filename: 'bundle.js',
+		chunkFilename: '[name]-[chunkhash].js',
 	},
 	plugins: [
-		new webpack.HotModuleReplacementPlugin(),
-		new webpack.NoErrorsPlugin(),
+		new ExtractTextPlugin('[name]-[chunkhash].css', {allChunks: true}),
+		new webpack.IgnorePlugin(/\.\/dev/, /\/config$/),
+
+		new webpack.DefinePlugin({
+			'process.env': {
+				NODE_ENV: 'production'
+			}
+		}),
+
 		new webpack.optimize.DedupePlugin(),
 		new webpack.optimize.OccurenceOrderPlugin(),
+		new webpack.optimize.UglifyJsPlugin({
+			compress: {
+				warnings: false
+			}
+		}),
 	],
 	module: {
 		loaders: [
@@ -30,5 +41,13 @@ module.exports = {
 			{ test: /\.css$/, loaders: ['style', 'css'] },
 			{ test: /\.scss$/, loader: 'style!css!sass' },
 		]
-	}
+	},
+	progress: true,
+	resolve: {
+		modulesDirectories: [
+			'frontend',
+			'node_modules'
+		],
+		extensions: ['', '.json', '.js', '.jsx']
+	},
 };
