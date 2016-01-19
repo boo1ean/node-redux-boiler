@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Egor Gumenyuk <boo1ean0807@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "cnfg": "^0.1.2"
