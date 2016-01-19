@@ -10,5 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "cnfg": "^0.1.2"
+  },
+  "devDependencies": {
+    "webpack": "^1.12.11",
+    "webpack-dev-server": "^1.14.1"
   }
 }
