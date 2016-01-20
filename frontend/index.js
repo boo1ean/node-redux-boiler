@@ -1,1 +1,1 @@
-console.log('I am FRONTEND');
+import './styles/main.scss';
