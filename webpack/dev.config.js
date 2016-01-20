@@ -5,7 +5,7 @@ module.exports = {
 	devtool: 'eval',
 	context: path.join(__dirname, '../frontend'),
 	entry: [
-		'../frontend',
+		path.join(__dirname, '../frontend'),
 		'webpack-dev-server/client?http://localhost:3000',
 		'webpack/hot/only-dev-server',
 	],
@@ -26,9 +26,9 @@ module.exports = {
 			{ test: /\.woff2?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
 			{ test: /\.ttf$/,  loader: "url-loader?limit=10000&mimetype=application/octet-stream" },
 			{ test: /\.svg$/,  loader: "url-loader?limit=10000&mimetype=image/svg+xml" },
-			{ test: /\.js$/, loaders: ['react-hot', 'babel'], include: path.join(__dirname, 'front') },
+			{ test: /\.js$/, loaders: ['react-hot', 'babel-loader'], exclude: /node_modules/ },
 			{ test: /\.css$/, loaders: ['style', 'css'] },
-			{ test: /\.scss$/, loader: 'style!css!sass' },
+			{ test: /\.scss$/, loaders: ['style', 'css', 'sass'] },
 		]
 	}
 };

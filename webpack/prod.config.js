@@ -37,17 +37,10 @@ module.exports = {
 			{ test: /\.woff2?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
 			{ test: /\.ttf$/,  loader: "url-loader?limit=10000&mimetype=application/octet-stream" },
 			{ test: /\.svg$/,  loader: "url-loader?limit=10000&mimetype=image/svg+xml" },
-			{ test: /\.js$/, loaders: ['react-hot', 'babel'], include: path.join(__dirname, 'front') },
+			{ test: /\.js$/, loaders: ['react-hot', 'babel-loader'], exclude: /node_modules/ },
 			{ test: /\.css$/, loaders: ['style', 'css'] },
-			{ test: /\.scss$/, loader: 'style!css!sass' },
+			{ test: /\.scss$/, loaders: ['style', 'css', 'sass'] },
 		]
 	},
-	progress: true,
-	resolve: {
-		modulesDirectories: [
-			'frontend',
-			'node_modules'
-		],
-		extensions: ['', '.json', '.js', '.jsx']
-	},
+	progress: true
 };
