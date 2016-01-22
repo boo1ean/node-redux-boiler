@@ -22,11 +22,11 @@ module.exports = {
 	],
 	module: {
 		loaders: [
+			{ test: /\.js$/, loader: 'react-hot!babel?presets[]=react&presets[]=es2015', exclude: /node_modules/ },
 			{ test: /\.eot$/,  loader: "file-loader" },
 			{ test: /\.woff2?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
 			{ test: /\.ttf$/,  loader: "url-loader?limit=10000&mimetype=application/octet-stream" },
 			{ test: /\.svg$/,  loader: "url-loader?limit=10000&mimetype=image/svg+xml" },
-			{ test: /\.js$/, loaders: ['react-hot', 'babel-loader'], exclude: /node_modules/ },
 			{ test: /\.css$/, loaders: ['style', 'css'] },
 			{ test: /\.scss$/, loaders: ['style', 'css', 'sass'] },
 		]
