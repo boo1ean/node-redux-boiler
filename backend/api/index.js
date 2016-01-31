@@ -6,14 +6,15 @@ var config = require('../config');
 var routes = require('./routes');
 var log = require('../providers/log');
 
+var port = config.apps.api.port;
+var app = express();
+
 process.on('uncaughtException', function (exception) {
 	log.error('fatal', exception, exception.stack);
 	process.exit(75);
 });
 
 log.info('Starting application...');
-
-var app = express();
 
 app.enable('trust proxy');
 app.disable('x-powered-by');
@@ -28,8 +29,8 @@ app.use(function (error, request, response, next) {
 	response.status(500).json({error: 'internal error'});
 });
 
-app.listen(app.get('port'), function () {
+app.listen(port, function () {
 	log.info('application started',
-		{ pid: process.pid, port: app.get('port'), environment: config.env }
+		{ pid: process.pid, port: port, environment: config.env }
 	);
 });
