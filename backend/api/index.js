@@ -5,7 +5,6 @@ var requestLog = require('express-request-log');
 var config = require('../config');
 var routes = require('./routes');
 var log = require('../providers/log');
-var db = require('../providers/db');
 
 process.on('uncaughtException', function (exception) {
 	log.error('fatal', exception, exception.stack);
