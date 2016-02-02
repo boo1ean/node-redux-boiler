@@ -1,7 +1,7 @@
 import { compose, createStore, applyMiddleware, } from 'redux';
 import DevTools from './components/dev-tools';
 import thunk from 'redux-thunk';
-import { syncHistory } from 'redux-simple-router';
+import { syncHistory } from 'react-router-redux';
 import { persistState } from 'redux-devtools';
 import { browserHistory } from 'react-router';
 import routes from './routes';

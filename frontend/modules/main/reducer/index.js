@@ -1,4 +1,4 @@
-import { routeReducer } from 'redux-simple-router';
+import { routeReducer } from 'react-router-redux';
 import { combineReducers } from 'redux';
 
 export default combineReducers({
