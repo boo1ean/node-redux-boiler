@@ -11,7 +11,7 @@
     "body-parser": "^1.9.3",
     "cnfg": "~0.1.1",
     "express": "^4.9.8",
-    "express-request-log": "0.0.3",
+    "express-request-log": "0.0.4",
     "helmet": "^1.1.0",
     "history": "^2.0.0-rc2",
     "lodash": "^4.0.0",
