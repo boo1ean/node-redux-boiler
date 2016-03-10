@@ -4,12 +4,12 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
 	devtool: 'source-map',
-	context: path.join(__dirname, '../frontend'),
+	context: path.resolve(__dirname, '../frontend'),
 	entry: [
 		path.resolve(__dirname, '../frontend')
 	],
 	output: {
-		path: path.join(__dirname, '../assets/dist'),
+		path: path.resolve(__dirname, '../assets/dist'),
 		publicPath: '/dist/',
 		filename: 'bundle.js',
 		chunkFilename: '[name]-[chunkhash].js',

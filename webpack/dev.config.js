@@ -3,14 +3,14 @@ var webpack = require('webpack');
 
 module.exports = {
 	devtool: 'eval',
-	context: path.join(__dirname, '../frontend'),
+	context: path.resolve(__dirname, '../frontend'),
 	entry: [
-		path.join(__dirname, '../frontend'),
+		path.resolve(__dirname, '../frontend'),
 		'webpack-dev-server/client?http://localhost:3000',
 		'webpack/hot/only-dev-server',
 	],
 	output: {
-		path: path.join(__dirname, '../assets/dist'),
+		path: path.resolve(__dirname, '../assets/dist'),
 		publicPath: '/dist/',
 		filename: 'bundle.js',
 	},
