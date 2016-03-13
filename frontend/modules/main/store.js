@@ -1,7 +1,9 @@
 import { compose, createStore, applyMiddleware, } from 'redux';
-import DevTools from './components/dev-tools';
 import thunk from 'redux-thunk';
+import { routerMiddleware } from 'react-router-redux';
+import { browserHistory } from 'react-router';
 import { persistState } from 'redux-devtools';
+import DevTools from './components/dev-tools';
 import routes from './routes';
 import reducer from './reducer';
 
@@ -12,6 +14,7 @@ const initialState = {
 function configureStore ({ state = initialState, routes, reducer }) {
 	return compose(
 		applyMiddleware(thunk),
+		applyMiddleware(routerMiddleware(browserHistory)),
 		DevTools.instrument(),
 		persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/))
 	)(createStore)(reducer, state);
