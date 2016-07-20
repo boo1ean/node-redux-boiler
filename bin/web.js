@@ -1,1 +1,1 @@
-require('../backend/apis/web');
+require('../backend/apps/web');
